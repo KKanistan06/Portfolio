@@ -1,0 +1,180 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.modern-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--background-color) 0%, var(--surface-color) 100%);
+  // Removed mouse interaction and perspective
+}
+
+.geometric-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.shape {
+  position: absolute;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  opacity: 0.06; // Reduced opacity for subtlety
+  animation: gentleFloat 15s ease-in-out infinite; // Slower, gentler animation
+  
+  // Reduced sizes significantly
+  &-1 {
+    width: 40px; // Reduced from 100px
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  &-2 {
+    width: 30px; // Reduced from 80px
+    height: 30px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+  
+  &-3 {
+    width: 35px; // Reduced from 60px
+    height: 35px;
+    border-radius: 20%;
+  }
+}
+
+.floating-orbs {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1), var(--primary-color));
+  opacity: 0.04; // Much more subtle
+  animation: gentleOrb 12s ease-in-out infinite;
+  
+  // Significantly reduced sizes
+  &-1 {
+    width: 80px; // Reduced from 200px
+    height: 80px;
+    top: 15%;
+    left: 15%;
+    animation-delay: 0s;
+  }
+  
+  &-2 {
+    width: 60px; // Reduced from 150px
+    height: 60px;
+    top: 70%;
+    right: 20%;
+    animation-delay: 3s;
+  }
+  
+  &-3 {
+    width: 50px; // Reduced from 100px
+    height: 50px;
+    bottom: 25%;
+    left: 25%;
+    animation-delay: 6s;
+  }
+  
+  &-4 {
+    width: 70px; // Reduced from 180px
+    height: 70px;
+    top: 40%;
+    right: 40%;
+    animation-delay: 9s;
+  }
+}
+
+.grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(37, 99, 235, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.02) 1px, transparent 1px);
+  background-size: 80px 80px; // Larger grid for less visual noise
+  animation: gridMove 30s linear infinite; // Slower movement
+  opacity: 0.3;
+}
+
+// Simplified, gentler animations
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotateZ(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotateZ(180deg);
+  }
+}
+
+@keyframes gentleOrb {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.04;
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+    opacity: 0.06;
+  }
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(80px, 80px);
+  }
+}
+
+// Responsive adjustments
+@include tablet {
+  .shape {
+    opacity: 0.04;
+    
+    &-1 { width: 30px; height: 30px; }
+    &-2 { width: 25px; height: 25px; }
+    &-3 { width: 28px; height: 28px; }
+  }
+  
+  .orb {
+    opacity: 0.03;
+    
+    &-1 { width: 60px; height: 60px; }
+    &-2 { width: 45px; height: 45px; }
+    &-3 { width: 40px; height: 40px; }
+    &-4 { width: 50px; height: 50px; }
+  }
+}
+
+@include mobile {
+  .shape {
+    opacity: 0.03;
+    
+    &-1 { width: 20px; height: 20px; }
+    &-2 { width: 18px; height: 18px; }
+    &-3 { width: 22px; height: 22px; }
+  }
+  
+  .orb {
+    opacity: 0.02;
+    
+    &-1 { width: 40px; height: 40px; }
+    &-2 { width: 35px; height: 35px; }
+    &-3 { width: 30px; height: 30px; }
+    &-4 { width: 38px; height: 38px; }
+  }
+  
+  .grid-overlay {
+    background-size: 60px 60px; // Even larger grid on mobile
+  }
+}
