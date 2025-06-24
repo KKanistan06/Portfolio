@@ -1,0 +1,116 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.footer {
+  background: var(--surface-color);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: $spacing-xl 0 $spacing-lg;
+
+  [data-theme="dark"] & {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &__container {
+    max-width: $large-desktop;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+  }
+
+  &__content {
+    @include flex-between;
+    margin-bottom: $spacing-lg;
+
+    @include tablet {
+      @include flex-column;
+      gap: $spacing-lg;
+      text-align: center;
+    }
+  }
+
+  &__brand {
+    flex: 1;
+  }
+
+  &__name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: $spacing-xs;
+    font-family: $font-secondary;
+  }
+
+  &__tagline {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  &__social {
+    @include flex-center;
+    gap: $spacing-md;
+  }
+
+  &__social-link {
+    @include flex-center;
+    width: 44px;
+    height: 44px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all $transition-normal;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: $shadow-lg;
+      background: var(--secondary-color);
+    }
+  }
+
+  &__bottom {
+    @include flex-between;
+    padding-top: $spacing-lg;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+    [data-theme="dark"] & {
+      border-top-color: rgba(255, 255, 255, 0.1);
+    }
+
+    @include tablet {
+      @include flex-column;
+      gap: $spacing-md;
+      text-align: center;
+    }
+  }
+
+  &__copyright {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+
+  &__scroll-top {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all $transition-normal;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+  }
+}
