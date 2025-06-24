@@ -1,0 +1,198 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  transition: all $transition-normal;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  [data-theme="dark"] & {
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &--scrolled {
+    box-shadow: $shadow-md;
+  }
+
+  &__container {
+    @include flex-between;
+    padding: $spacing-4 $spacing-6;
+    min-height: 70px;
+    align-items: center; // Fix: Ensure proper vertical alignment
+  }
+
+  &__brand {
+    @include flex-center;
+    flex-shrink: 0; // Fix: Prevent brand from shrinking
+  }
+
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-family: $font-secondary;
+  }
+
+  &__menu {
+    @include flex-center;
+    flex: 1; // Fix: Allow menu to take available space
+    justify-content: center; // Fix: Center the navigation items
+
+    @include tablet {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: var(--background-color);
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all $transition-normal;
+      box-shadow: $shadow-lg;
+      justify-content: flex-start;
+      padding: $spacing-4;
+    }
+
+    &--open {
+      @include tablet {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &__list {
+    @include flex-center;
+    list-style: none;
+    gap: $spacing-8;
+    margin: 0; // Fix: Remove default margin
+    padding: 0; // Fix: Remove default padding
+
+    @include tablet {
+      @include flex-column;
+      gap: $spacing-4;
+      width: 100%;
+    }
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  &__link {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: $spacing-2 $spacing-4;
+    border-radius: 6px;
+    transition: all $transition-fast;
+    position: relative;
+
+    &:hover {
+      color: var(--primary-color);
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    &--active {
+      color: var(--primary-color);
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 2px;
+        background: var(--primary-color);
+        border-radius: 1px;
+
+        @include tablet {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__actions {
+    @include flex-center;
+    gap: $spacing-3;
+    flex-shrink: 0; // Fix: Prevent actions from shrinking
+  }
+
+  &__toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-2;
+    @include flex-column;
+    gap: 4px;
+    width: 32px; // Fix: Set fixed width
+    height: 32px; // Fix: Set fixed height
+    justify-content: center;
+
+    @include tablet {
+      display: flex;
+    }
+
+    // Fix: Hide on desktop completely
+    @include desktop {
+      display: none !important;
+    }
+
+    &-line {
+      width: 20px; // Fix: Consistent line width
+      height: 2px;
+      background: var(--text-primary);
+      transition: all $transition-fast;
+      border-radius: 1px;
+    }
+
+    &--open {
+      .navbar__toggle-line {
+        &:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+      }
+    }
+  }
+}
+
+// Fix: Ensure proper responsive behavior
+@include desktop {
+  .navbar {
+    &__menu {
+      display: flex !important;
+      position: static !important;
+      background: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      box-shadow: none !important;
+    }
+
+    &__toggle {
+      display: none !important;
+    }
+  }
+}
