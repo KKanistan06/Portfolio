@@ -1,0 +1,1079 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.about {
+  background: var(--background-color);
+  position: relative;
+  min-height: 100vh;
+  padding-top: $spacing-xl;
+  overflow: hidden;
+  width: 100%;
+
+  &__lighting-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &__light {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: lightFloat 8s ease-in-out infinite;
+    
+    &--1 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 107, 107, 0.3) 0%, transparent 70%);
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    &--2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(78, 205, 196, 0.25) 0%, transparent 70%);
+      top: 60%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+    
+    &--3 {
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(69, 183, 209, 0.35) 0%, transparent 70%);
+      bottom: 20%;
+      left: 50%;
+      animation-delay: 4s;
+    }
+  }
+
+  &__floating-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: particleFloat 15s linear infinite;
+    
+    &--1 { animation-delay: 0s; }
+    &--2 { animation-delay: 5s; }
+    &--3 { animation-delay: 10s; }
+    
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        left: #{random(100)};
+        top: #{random(100)};
+        animation-delay: #{random(15)}s;
+        animation-duration: #{10 + random(10)}s;
+      }
+    }
+  }
+
+  // Add these new styles for the avatar image
+&__avatar-image {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  
+  @include tablet {
+    width: 100px;
+    height: 100px;
+  }
+  
+  @include mobile {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+&__avatar-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-color);
+  position: relative;
+  z-index: 3;
+  transition: all $transition-normal;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+&__avatar-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include flex-center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  border-radius: 50%;
+  z-index: 3;
+  
+  @include tablet {
+    font-size: 2rem;
+  }
+  
+  @include mobile {
+    font-size: 1.5rem;
+  }
+}
+
+// Update existing avatar container styles
+&__avatar-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  
+  @include tablet {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+  }
+  
+  @include mobile {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+&__avatar-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, var(--primary-color)20, transparent);
+  border-radius: 50%;
+  animation: avatarGlow 3s ease-in-out infinite;
+  
+  @include tablet {
+    width: 130px;
+    height: 130px;
+  }
+  
+  @include mobile {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+&__avatar-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  height: 140px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: ringRotate 4s linear infinite;
+  
+  @include tablet {
+    width: 120px;
+    height: 120px;
+  }
+  
+  @include mobile {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+
+  // FIXED: Increased container padding significantly
+  &__container {
+    max-width: $large-desktop;
+    margin: 0 auto;
+    padding: 0 $spacing-xl; // Increased padding even more
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box;
+    
+    @include tablet {
+      padding: 0 $spacing-lg;
+    }
+    
+    @include mobile {
+      padding: 0 $spacing-md;
+    }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+    position: relative;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: $spacing-sm;
+    font-family: $font-secondary;
+    background: linear-gradient(135deg, var(--text-primary), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+      z-index: -1;
+      animation: titlePulse 4s ease-in-out infinite;
+    }
+  }
+
+  &__subtitle {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: var(--text-secondary);
+    margin-bottom: $spacing-lg;
+  }
+
+  &__title-decoration {
+    @include flex-center;
+    gap: $spacing-sm;
+    margin-top: $spacing-md;
+  }
+
+  &__title-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  }
+
+  &__title-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--primary-color);
+    animation: dotPulse 2s ease-in-out infinite;
+  }
+
+  &__content {
+    display: grid;
+    gap: $spacing-xl;
+    width: 100%;
+  }
+
+  &__intro {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__intro-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: $spacing-xl;
+    align-items: center;
+    width: 100%;
+    
+    @include tablet {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: $spacing-lg;
+    }
+  }
+
+  &__intro-avatar {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  &__avatar-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    
+    @include tablet {
+      margin: 0 auto;
+    }
+    
+    @include mobile {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &__avatar-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, var(--primary-color)20, transparent);
+    border-radius: 50%;
+    animation: avatarGlow 3s ease-in-out infinite;
+    
+    @include mobile {
+      width: 130px;
+      height: 130px;
+    }
+  }
+
+  &__avatar-placeholder {
+    position: relative;
+    @include flex-center;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    border-radius: 50%;
+    z-index: 2;
+    
+    @include mobile {
+      width: 100px;
+      height: 100px;
+      font-size: 2rem;
+    }
+  }
+
+  &__avatar-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 140px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: ringRotate 4s linear infinite;
+    
+    @include mobile {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  &__intro-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__intro-title {
+    font-size: clamp(1.3rem, 4vw, 2rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: $spacing-md;
+    font-family: $font-secondary;
+  }
+
+  &__intro-description {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: $spacing-md;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: $spacing-md;
+    margin: $spacing-xl 0;
+    width: 100%;
+    
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $spacing-sm;
+    }
+  }
+
+  &__stat {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  // REMOVED: All hover box shadow effects
+  &__stat-content {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: $spacing-md;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    transition: transform $transition-normal; // Only transform, no shadow
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    &:hover {
+      transform: translateY(-2px); // Only slight movement
+      
+      &::before {
+        left: 100%;
+      }
+    }
+  }
+
+  &__stat-icon {
+    font-size: 2rem;
+    margin-bottom: $spacing-xs;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+
+  &__stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: $spacing-xs;
+    font-family: $font-secondary;
+  }
+
+  &__stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  &__stat-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, var(--primary-color)20, transparent);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity $transition-normal;
+  }
+
+  &__stat:hover &__stat-glow {
+    opacity: 1;
+  }
+
+  &__timeline-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-lg;
+    width: 100%;
+    
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+    }
+  }
+
+  &__timeline-card {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__section-header {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+    position: relative;
+  }
+
+  &__section-title {
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    @include flex-center;
+    gap: $spacing-sm;
+    font-family: $font-secondary;
+  }
+
+  &__section-icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+
+  &__section-glow {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+    box-shadow: 0 0 15px var(--primary-color);
+  }
+
+  // FIXED: Timeline container with even more padding
+  &__timeline-container {
+    position: relative;
+    padding-left: 80px; // Increased padding significantly
+    width: 100%;
+    box-sizing: border-box;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 40px; // Moved timeline line further right
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+      border-radius: 2px;
+      box-shadow: 0 0 10px var(--primary-color);
+    }
+    
+    @include tablet {
+      padding-left: 70px;
+      
+      &::before {
+        left: 35px;
+      }
+    }
+    
+    @include mobile {
+      padding-left: 60px;
+      
+      &::before {
+        left: 30px;
+      }
+    }
+  }
+
+  &__timeline-item {
+    position: relative;
+    margin-bottom: $spacing-lg;
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideInLeft 0.8s ease-out forwards;
+    width: 100%;
+    box-sizing: border-box;
+
+    &:nth-child(2) { animation-delay: 0.3s; }
+    &:nth-child(3) { animation-delay: 0.6s; }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // FIXED: Timeline marker positioned safely within padding
+  &__timeline-marker {
+    position: absolute;
+    left: -55px; // Positioned well within the 80px padding
+    top: 8px;
+    width: 35px;
+    height: 35px;
+    background: var(--item-color, var(--primary-color));
+    border-radius: 50%;
+    @include flex-center;
+    border: 3px solid var(--background-color);
+    box-shadow: 0 0 0 2px var(--item-color, var(--primary-color));
+    z-index: 3;
+    
+    @include tablet {
+      left: -47px;
+      width: 30px;
+      height: 30px;
+    }
+    
+    @include mobile {
+      left: -40px;
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  &__timeline-icon {
+    font-size: 1rem;
+    z-index: 2;
+    
+    @include mobile {
+      font-size: 0.8rem;
+    }
+  }
+
+  &__timeline-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--item-color, var(--primary-color));
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+    opacity: 0.6;
+    
+    @include mobile {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  // REMOVED: All hover box shadow effects from timeline content
+  &__timeline-content {
+    background: rgba(255, 255, 255, 0.05);
+    padding: $spacing-md;
+    border-radius: 12px;
+    border-left: 3px solid var(--item-color, var(--primary-color));
+    transition: transform $transition-normal; // Only transform, no shadow
+    margin-left: 0;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+
+    &:hover {
+      transform: translateY(-2px); // Only slight movement, no shadow
+      border-left-width: 4px;
+    }
+    
+    @include mobile {
+      padding: $spacing-sm;
+    }
+  }
+
+  &__timeline-header {
+    @include flex-between;
+    align-items: flex-start;
+    margin-bottom: $spacing-sm;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+  }
+
+  &__timeline-title {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.3;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__timeline-grade,
+  &__timeline-status {
+    background: var(--item-color, var(--primary-color));
+    color: white;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  &__timeline-company {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    color: var(--item-color, var(--primary-color));
+    font-weight: 600;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__timeline-duration {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__timeline-description {
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__achievements {
+    display: grid;
+    gap: $spacing-xs;
+  }
+
+  &__achievement {
+    font-size: clamp(0.7rem, 1.8vw, 0.85rem);
+    color: var(--text-secondary);
+    @include flex-center;
+    justify-content: flex-start;
+    gap: $spacing-xs;
+  }
+
+  &__timeline-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, var(--glow-color, var(--primary-color))10, transparent);
+    opacity: 0;
+    transition: opacity $transition-normal;
+    pointer-events: none;
+  }
+
+  &__timeline-item:hover &__timeline-glow {
+    opacity: 1;
+  }
+
+  &__interests {
+    margin-top: $spacing-xl;
+    width: 100%;
+  }
+
+  &__interests-header {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__interests-title {
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: $spacing-sm;
+    font-family: $font-secondary;
+  }
+
+  &__interests-subtitle {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    color: var(--text-secondary);
+  }
+
+  &__interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: $spacing-md;
+    width: 100%;
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-sm;
+    }
+  }
+
+  // REMOVED: All hover box shadow effects from interest items
+  &__interest-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: $spacing-md;
+    @include flex-center;
+    gap: $spacing-sm;
+    transition: transform $transition-normal; // Only transform, no shadow
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+
+    &:hover {
+      transform: translateY(-2px); // Only slight movement, no shadow
+      
+      .about__interest-glow {
+        opacity: 1;
+      }
+    }
+    
+    @include mobile {
+      flex-direction: column;
+      text-align: center;
+      padding: $spacing-sm;
+    }
+  }
+
+  &__interest-icon {
+    font-size: 1.8rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    flex-shrink: 0;
+  }
+
+  &__interest-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__interest-name {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: $spacing-xs;
+  }
+
+  &__interest-description {
+    font-size: clamp(0.7rem, 1.8vw, 0.85rem);
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  &__interest-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, var(--primary-color)20, transparent);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity $transition-normal;
+  }
+
+  // Enhanced Modal Styles (keeping existing modal styles)
+  &__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    @include flex-center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease-out;
+    backdrop-filter: blur(10px);
+  }
+
+  &__modal-content {
+    background: var(--surface-color);
+    padding: $spacing-xl;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transform: scale(0.9);
+    animation: modalSlideIn 0.3s ease-out forwards;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), transparent);
+      pointer-events: none;
+    }
+  }
+
+  &__modal-header {
+    margin-bottom: $spacing-lg;
+  }
+
+  &__modal-avatar {
+    font-size: 3rem;
+    margin-bottom: $spacing-sm;
+    animation: wave 2s ease-in-out infinite;
+  }
+
+  &__modal-content h3 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin-bottom: $spacing-md;
+    font-family: $font-secondary;
+  }
+
+  &__modal-content p {
+    color: var(--text-secondary);
+    margin-bottom: $spacing-xl;
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+
+  &__modal-actions {
+    @include flex-center;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+  }
+
+  &__modal-btn {
+    @include button-base;
+    font-size: 1rem;
+    min-width: 140px;
+    @include flex-center;
+    gap: $spacing-xs;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    &:hover::before {
+      left: 100%;
+    }
+
+    &--primary {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+
+      &:hover {
+        transform: translateY(-2px); // Only transform, no shadow
+      }
+    }
+
+    &--secondary {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+  }
+
+  &__modal-btn-icon {
+    font-size: 1.2rem;
+  }
+}
+
+// Keyframe Animations (keeping existing animations)
+@keyframes lightFloat {
+  0%, 100% { 
+    transform: translateY(0px) scale(1); 
+    opacity: 0.3; 
+  }
+  50% { 
+    transform: translateY(-20px) scale(1.1); 
+    opacity: 0.5; 
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes titlePulse {
+  0%, 100% { 
+    opacity: 0.5; 
+    transform: translate(-50%, -50%) scale(1); 
+  }
+  50% { 
+    opacity: 0.8; 
+    transform: translate(-50%, -50%) scale(1.05); 
+  }
+}
+
+@keyframes dotPulse {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 20px var(--primary-color); 
+  }
+  50% { 
+    transform: scale(1.2); 
+    box-shadow: 0 0 30px var(--primary-color); 
+  }
+}
+
+@keyframes avatarGlow {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: translate(-50%, -50%) scale(1); 
+  }
+  50% { 
+    opacity: 0.6; 
+    transform: translate(-50%, -50%) scale(1.1); 
+  }
+}
+
+@keyframes ringRotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1); 
+    opacity: 0.6; 
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.2); 
+    opacity: 0.3; 
+  }
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideIn {
+  to {
+    transform: scale(1);
+  }
+}
