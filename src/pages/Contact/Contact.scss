@@ -1,0 +1,251 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.contact {
+  background: var(--background-color);
+
+  &__container {
+    max-width: 800px; // Reduce max-width since we removed the sidebar
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: $spacing-sm;
+    font-family: $font-secondary;
+  }
+
+  &__subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  &__form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  &__form {
+    @include card;
+    @include flex-column;
+    gap: $spacing-md;
+  }
+
+  &__form-group {
+    @include flex-column;
+    gap: $spacing-xs;
+  }
+
+  &__form-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+  }
+
+  &__form-input,
+  &__form-textarea {
+    padding: $spacing-md;
+    border: 2px solid rgba(37, 99, 235, 0.2);
+    border-radius: 8px;
+    background: var(--surface-color);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all $transition-normal;
+    font-family: inherit;
+
+    &:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    &::placeholder {
+      color: var(--text-secondary);
+      opacity: 0.7;
+    }
+
+    &--error {
+      border-color: #ef4444;
+      
+      &:focus {
+        border-color: #ef4444;
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+      }
+    }
+  }
+
+  &__form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  &__form-error {
+    color: #ef4444;
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+
+  &__form-submit {
+    @include button-base;
+    background: var(--primary-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: $spacing-md $spacing-lg;
+    @include flex-center;
+    gap: $spacing-xs;
+    margin-top: $spacing-md;
+    position: relative;
+    overflow: hidden;
+
+    &:hover:not(:disabled) {
+      background: var(--secondary-color);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    &:hover::before {
+      left: 100%;
+    }
+  }
+
+  &__form-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  &__form-message {
+    padding: $spacing-md;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: $spacing-md;
+
+    &--success {
+      background: rgba(34, 197, 94, 0.1);
+      color: #16a34a;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    &--error {
+      background: rgba(239, 68, 68, 0.1);
+      color: #dc2626;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Form Animation
+.contact__form {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideInUp 0.6s ease-out 0.2s forwards;
+}
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+// Enhanced message styles
+.contact__form-message {
+  margin-top: $spacing-md;
+  padding: $spacing-md;
+  border-radius: 8px;
+  animation: slideInMessage 0.3s ease-out;
+  
+  &--success {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+  }
+  
+  &--error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+  }
+}
+
+.contact__message-content {
+  @include flex-between;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.contact__message-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.contact__message-text {
+  flex: 1;
+  font-weight: 500;
+}
+
+.contact__message-dismiss {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  @include flex-center;
+  border-radius: 50%;
+  transition: background-color $transition-fast;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+@keyframes slideInMessage {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
