@@ -1,0 +1,671 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.home {
+  min-height: 100vh;
+  @include flex-center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+
+  &__background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, var(--background-color) 0%, var(--surface-color) 100%);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+      animation: float 6s ease-in-out infinite;
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: $large-desktop;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-xl;
+    align-items: center;
+    min-height: calc(100vh - 160px);
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: $spacing-lg;
+      min-height: auto;
+    }
+  }
+
+  &__text {
+    @include flex-column;
+    gap: $spacing-md;
+    justify-content: center;
+  }
+
+  &__name {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.1;
+    font-family: $font-secondary;
+    margin-bottom: $spacing-sm;
+    background: linear-gradient(135deg, var(--text-primary), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__roles {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: var(--text-secondary);
+    margin-bottom: $spacing-md;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    @include mobile {
+      justify-content: center;
+    }
+  }
+
+  &__role-prefix {
+    color: var(--text-secondary);
+  }
+
+  &__role-dynamic {
+    color: var(--primary-color);
+    font-weight: 600;
+    display: inline-block;
+    min-height: 1.2em;
+
+    .typed-cursor {
+      color: var(--primary-color);
+      animation: blink 1s infinite;
+    }
+  }
+
+  &__description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__actions {
+    @include flex-center;
+    gap: $spacing-lg;
+    justify-content: flex-start;
+
+    @include tablet {
+      justify-content: center;
+      @include flex-column;
+      gap: $spacing-md;
+    }
+  }
+
+  &__cv-btn {
+    @include button-base;
+    background: var(--primary-color);
+    color: white;
+    font-size: 1rem;
+    padding: $spacing-md $spacing-lg;
+    @include flex-center;
+    gap: $spacing-xs;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    &:hover::before {
+      left: 100%;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      background: var(--secondary-color);
+    }
+  }
+
+  &__social {
+    @include flex-center;
+    gap: $spacing-md;
+  }
+
+  &__social-link {
+    @include flex-center;
+    width: 48px;
+    height: 48px;
+    background: var(--surface-color);
+    color: var(--text-secondary);
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all $transition-normal;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--primary-color);
+      border-radius: 50%;
+      transform: scale(0);
+      transition: transform $transition-normal;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      z-index: 1;
+      transition: color $transition-normal;
+    }
+
+    &:hover {
+      border-color: var(--primary-color);
+      transform: translateY(-3px);
+
+      &::before {
+        transform: scale(1);
+      }
+
+      svg {
+        color: white;
+      }
+    }
+  }
+
+  &__image {
+    @include flex-center;
+    position: relative;
+    justify-content: center;
+  }
+
+  &__hero-visual {
+    position: relative;
+    width: 300px;
+    height: 300px;
+
+    @include tablet {
+      width: 250px;
+      height: 250px;
+    }
+
+    @include mobile {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  &__floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__profile-container {
+    @include flex-center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__profile-image {
+    position: relative;
+    width: 280px; // Increased from 220px
+    height: 280px; // Increased from 220px
+
+    @include tablet {
+      width: 240px; // Increased from 180px
+      height: 240px; // Increased from 180px
+    }
+
+    @include mobile {
+      width: 200px; // Increased from 150px
+      height: 200px; // Increased from 150px
+    }
+  }
+
+  &__profile-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+    position: relative;
+    z-index: 3;
+    transition: all $transition-normal;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  // Update the ring size accordingly
+  &__profile-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px; // Increased from 260px
+    height: 320px; // Increased from 260px
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    animation: ringRotate 4s linear infinite;
+    z-index: 1;
+
+    @include tablet {
+      width: 280px; // Increased from 220px
+      height: 280px; // Increased from 220px
+    }
+
+    @include mobile {
+      width: 240px; // Increased from 190px
+      height: 240px; // Increased from 190px
+    }
+  }
+
+  // Update the glow effect size
+  &__profile-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 360px; // Increased from 300px
+    height: 360px; // Increased from 300px
+    background: radial-gradient(circle, var(--primary-color)15, transparent);
+    border-radius: 50%;
+    animation: avatarGlow 3s ease-in-out infinite;
+    z-index: 0;
+
+    @include tablet {
+      width: 320px; // Increased from 250px
+      height: 320px; // Increased from 250px
+    }
+
+    @include mobile {
+      width: 280px; // Increased from 200px
+      height: 280px; // Increased from 200px
+    }
+  }
+}
+
+.floating-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  opacity: 0.3;
+
+  &--1 {
+    width: 60px;
+    height: 60px;
+    top: 20%;
+    left: 10%;
+    animation: float-1 4s ease-in-out infinite;
+  }
+
+  &--2 {
+    width: 40px;
+    height: 40px;
+    top: 60%;
+    right: 20%;
+    animation: float-2 3s ease-in-out infinite reverse;
+  }
+
+  &--3 {
+    width: 80px;
+    height: 80px;
+    bottom: 20%;
+    left: 20%;
+    animation: float-3 5s ease-in-out infinite;
+  }
+}
+
+// Keyframe Animations
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float-1 {
+
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
+@keyframes float-2 {
+
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+
+  50% {
+    transform: translateY(-15px) translateX(-10px);
+  }
+}
+
+@keyframes float-3 {
+
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+
+  50% {
+    transform: translateY(-25px) translateX(15px);
+  }
+}
+
+@keyframes ringRotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes avatarGlow {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+// CV Modal Styles
+.cv-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  @include flex-center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease-out;
+
+  &__content {
+    background: var(--surface-color);
+    padding: $spacing-xl;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+
+    h3 {
+      color: var(--text-primary);
+      margin-bottom: $spacing-lg;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__buttons {
+    @include flex-column;
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+}
+
+.cv-btn {
+  @include button-base;
+  background: var(--primary-color);
+  color: white;
+  padding: $spacing-md $spacing-lg;
+
+  &:hover {
+    background: var(--secondary-color);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// Enhanced CV Modal Styles
+.cv-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  @include flex-center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease-out;
+  backdrop-filter: blur(10px);
+
+  &__content {
+    background: var(--surface-color);
+    padding: $spacing-xl;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+
+  &__header {
+    @include flex-between;
+    align-items: center;
+    margin-bottom: $spacing-md;
+    
+    h3 {
+      color: var(--text-primary);
+      font-size: 1.8rem;
+      font-family: $font-secondary;
+      margin: 0;
+    }
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    @include flex-center;
+    border-radius: 50%;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+    }
+  }
+
+  &__description {
+    margin-bottom: $spacing-lg;
+    
+    p {
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.6;
+    }
+  }
+
+  &__buttons {
+    @include flex-column;
+    gap: $spacing-md;
+  }
+}
+
+.cv-btn {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: $spacing-lg;
+  cursor: pointer;
+  transition: all $transition-normal;
+  text-align: left;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+  }
+
+  &:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.2);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &--se:hover {
+    border-color: #4ECDC4;
+    box-shadow: 0 8px 25px rgba(78, 205, 196, 0.2);
+  }
+
+  &--ml:hover {
+    border-color: #FF6B6B;
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.2);
+  }
+
+  &__icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: $spacing-xs;
+  }
+
+  &__subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+}
