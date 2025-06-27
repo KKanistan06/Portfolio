@@ -9,7 +9,7 @@ const FloatingNav = () => {
   useEffect(() => {
     const handleScroll = () => {
       // Show nav after scrolling 100px
-      setIsVisible(window.scrollY > 100);
+      setIsVisible(window.scrollY > 300);
       
       // Update active section
       const sections = NAVIGATION_ITEMS.map(item => item.id);
@@ -49,7 +49,7 @@ const FloatingNav = () => {
               activeSection === item.id ? 'floating-nav__item--active' : ''
             }`}
             onClick={() => handleNavigate(item.href, item.id)}
-            style={{ animationDelay: `${index * 0.1}s` }}
+            style={{ animationDelay: `${index * 0.3}s` }}
             title={item.name}
           >
             <span className="floating-nav__dot"></span>
