@@ -7,7 +7,7 @@ import './Skills.scss';
 
 const Skills = () => {
   const [visibleSkills, setVisibleSkills] = useState(new Set());
-  const [hoveredCategory, setHoveredCategory] = useState(null);
+  const [, setHoveredCategory] = useState(null);
   const skillsRef = useRef([]);
 
   const skillCategories = [
