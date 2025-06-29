@@ -3,7 +3,7 @@
 Modern portfolio website built with React, featuring 3D animations and responsive design.
 
 ## 🚀 Live Demo
-[View Portfolio](https://your-netlify-url.netlify.app)
+[View Portfolio](https://kanistan.netlify.app)
 
 ## 🛠️ Technologies Used
 - React 18
