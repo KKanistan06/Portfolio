@@ -46,7 +46,7 @@ const Projects = () => {
       id: 4,
       title: "Password Manager Application",
       description: "Secure password manager web application built with React, MongoDB, and JWT authentication, allowing users to store and manage credentials with encryption.",
-      image: "/images/project3.jpg",
+      image: "/images/project3.png",
       category: "Software Engineering",
       techStack: ["React", "MongoDB", "JWT"],
       githubUrl: "https://github.com/KKanistan06/password-manager",
