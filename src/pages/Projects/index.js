@@ -33,47 +33,66 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: "3D Portfolio with React Three Fiber",
-      description: "Interactive 3D portfolio website built with React Three Fiber, featuring immersive 3D graphics, smooth animations, and responsive design for modern web experience.",
+      title: "Air Quality Monitoring System",
+      description: "IoT-based air quality monitoring system using ESP32, LoRa, MQTT for sensor data transmission, with real-time visualization via a React dashboard and MongoDB backend.",
       image: "/images/project3.jpg",
-      category: "Software Engineering",
-      techStack: ["React", "Three.js", "React Three Fiber", "GSAP"],
-      githubUrl: "https://github.com/your-username/3d-portfolio",
-      liveUrl: "https://your-3d-portfolio.com",
-      color: "#45B7D1"
+      category: "Embadded Systems",
+      techStack: ["ESP32", "LoRa", "MQTT", "C", "React", "MongoDB"],
+      githubUrl: "https://github.com/your-username/air-quality-monitoring-system",
+      liveUrl: "https://your-air-quality-demo.com",
+      color: "#4ECDC4"
     },
     {
       id: 4,
-      title: "IoT Smart Agriculture System",
-      description: "Arduino-based smart farming solution with real-time monitoring, automated irrigation, and LoRa communication for remote farm management.",
-      image: "/images/project4.jpg",
-      category: "Embedded Systems",
-      techStack: ["Arduino", "C++", "LoRa", "MQTT"],
-      githubUrl: "https://github.com/your-username/smart-agriculture",
-      liveUrl: "https://smart-farm-demo.com",
-      color: "#96CEB4"
+      title: "Password Manager Application",
+      description: "Secure password manager web application built with React, MongoDB, and JWT authentication, allowing users to store and manage credentials with encryption.",
+      image: "/images/project3.jpg",
+      category: "Software Engineering",
+      techStack: ["React", "MongoDB", "JWT"],
+      githubUrl: "https://github.com/KKanistan06/password-manager",
+      liveUrl: "https://your-password-manager-demo.com",
+      color: "#1A535C"
     },
     {
       id: 5,
-      title: "Real-time Chat Application",
-      description: "Modern chat application with real-time messaging, file sharing, video calls, and group chat functionality using Socket.io and WebRTC.",
-      image: "/images/project5.jpg",
+      title: "Feedback Management System",
+      description: "Web-based feedback management platform developed with HTML5, CSS3, JavaScript, PHP, and MySQL to collect and manage user feedback for institutions.",
+      image: "/images/project2.jpeg",
       category: "Software Engineering",
-      techStack: ["React", "Node.js", "Socket.io", "WebRTC"],
-      githubUrl: "https://github.com/your-username/realtime-chat",
-      liveUrl: "https://chat-app-demo.com",
-      color: "#FFD166"
+      techStack: ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL"],
+      githubUrl: "https://github.com/KKanistan06/feedback-management-system",
+      color: "#FFB347"
     },
     {
       id: 6,
-      title: "Computer Vision Object Detection",
-      description: "Advanced object detection system using YOLO and OpenCV for real-time detection and tracking with custom dataset training and optimization.",
-      image: "/images/project6.jpg",
+      title: "Face Recognition System",
+      description: "Face recognition system implemented using Python, OpenCV, and TensorFlow for real-time face detection and identification, suitable for security and attendance tracking.",
+      image: "/images/project5.png",
       category: "Machine Learning",
-      techStack: ["Python", "YOLO", "OpenCV", "PyTorch"],
-      githubUrl: "https://github.com/your-username/object-detection",
-      liveUrl: null,
-      color: "#6A4C93"
+      techStack: ["Python", "OpenCV", "TensorFlow"],
+      githubUrl: "https://github.com/KKanistan06/face-recognition-system",
+      color: "#6A0572"
+    },
+    {
+      id: 7,
+      title: "Project Information Management System",
+      description: "A React and MongoDB-based web application for managing academic or organizational project data, featuring CRUD operations, role-based access, and search/filter capabilities.",
+      image: "/images/project4.png",
+      category: "Software Engineering",
+      techStack: ["React", "MongoDB", "Node.js", "Express"],
+      githubUrl: "https://github.com/KKanistan06/project-info-management",
+      liveUrl: "https://your-project-info-demo.com",
+      color: "#FFA07A"
+    },
+    {
+      id: 8,
+      title: "Object Detection by Color",
+      description: "Real-time object detection system using Python, OpenCV, and Keras to identify and track objects based on specific color ranges, useful in robotics and vision applications.",
+      image: "/images/project6.png",
+      category: "AI / Machine Learning",
+      techStack: ["Python", "OpenCV", "Keras"],
+      githubUrl: "https://github.com/KKanistan06/color-object-detection",
+      color: "#00BFFF"
     }
   ];
 
