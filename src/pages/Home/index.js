@@ -9,17 +9,17 @@ const Home = () => {
   const SOCIAL_LINKS = [
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/your-profile',
+      url: 'https://linkedin.com/in/kanistan',
       icon: 'linkedin'
     },
     {
       name: 'GitHub',
-      url: 'https://github.com/your-username',
+      url: 'https://github.com/KKanistan06',
       icon: 'github'
     },
     {
       name: 'Email',
-      url: 'mailto:your-email@example.com',
+      url: 'mailto:kkanistan874@gmail.com.com',
       icon: 'email'
     }
   ];
