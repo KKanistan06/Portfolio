@@ -17,7 +17,7 @@ const Projects = () => {
       category: "Software Engineering",
       techStack: [".NET", "MS SQL Server", "C#", "React"],
       githubUrl: "https://github.com/your-username/course-registration-system",
-      liveUrl: "https://your-course-registration-demo.com",
+      liveUrl: "https://course-registration.com",
       color: "#FF6B6B"
     },
     {
@@ -27,7 +27,7 @@ const Projects = () => {
       image: "/images/project2.jpg",
       category: "Machine Learning",
       techStack: ["Python", "TensorFlow", "VGG16", "NLTK"],
-      githubUrl: "https://github.com/your-username/image-captioning-vgg16",
+      githubUrl: "https://github.com/KKanistan06/image-captioning-vgg16",
       liveUrl: null,
       color: "#4ECDC4"
     },
@@ -38,8 +38,8 @@ const Projects = () => {
       image: "/images/project3.jpg",
       category: "Embadded Systems",
       techStack: ["ESP32", "LoRa", "MQTT", "C", "React", "MongoDB"],
-      githubUrl: "https://github.com/your-username/air-quality-monitoring-system",
-      liveUrl: "https://your-air-quality-demo.com",
+      githubUrl: "https://github.com/KKanistan06/air-quality-monitoring-system",
+      liveUrl: "https://air-quality-app.com",
       color: "#4ECDC4"
     },
     {
@@ -50,7 +50,7 @@ const Projects = () => {
       category: "Software Engineering",
       techStack: ["React", "MongoDB", "JWT"],
       githubUrl: "https://github.com/KKanistan06/password-manager",
-      liveUrl: "https://your-password-manager-demo.com",
+      liveUrl: "https://password-manager.com",
       color: "#1A535C"
     },
     {
@@ -81,7 +81,7 @@ const Projects = () => {
       category: "Software Engineering",
       techStack: ["React", "MongoDB", "Node.js", "Express"],
       githubUrl: "https://github.com/KKanistan06/project-info-management",
-      liveUrl: "https://your-project-info-demo.com",
+      liveUrl: "https://project-Manager.com",
       color: "#FFA07A"
     },
     {
