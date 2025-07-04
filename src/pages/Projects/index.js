@@ -22,7 +22,7 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "Image Captioning with VGG16",
+      title: "Image Caption Generator",
       description: "Advanced image captioning system using VGG16 models with optimized accuracy. Implements deep learning for automatic image description generation with 92% accuracy.",
       image: "/images/project2.jpg",
       category: "Machine Learning",
