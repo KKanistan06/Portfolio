@@ -93,6 +93,16 @@ const Projects = () => {
       techStack: ["Python", "OpenCV", "Keras"],
       githubUrl: "https://github.com/KKanistan06/color-object-detection",
       color: "#00BFFF"
+    },
+    {
+      id: 9,
+      title: "Page Replacement Algorithms",
+      description: "Real-time object detection system using Python, OpenCV, and Keras to identify and track objects based on specific color ranges, useful in robotics and vision applications.",
+      image: "/images/project9.png",
+      category: "AI / Machine Learning",
+      techStack: ["Algorithms", "React", "OS"],
+      githubUrl: "https://github.com/KKanistan06/Page-Replacement-Simulator",
+      color: "#00BFFF"
     }
   ];
 
