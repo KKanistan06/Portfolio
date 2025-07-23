@@ -17,7 +17,6 @@ const Projects = () => {
       category: "Software Engineering",
       techStack: [".NET", "MS SQL Server", "C#", "React"],
       githubUrl: "https://github.com/your-username/course-registration-system",
-      liveUrl: "https://course-registration.com",
       color: "#FF6B6B"
     },
     {
@@ -28,7 +27,6 @@ const Projects = () => {
       category: "Machine Learning",
       techStack: ["Python", "TensorFlow", "VGG16", "NLTK"],
       githubUrl: "https://github.com/KKanistan06/image-captioning-vgg16",
-      liveUrl: null,
       color: "#4ECDC4"
     },
     {
@@ -39,7 +37,6 @@ const Projects = () => {
       category: "Embadded Systems",
       techStack: ["ESP32", "LoRa", "MQTT", "C", "React", "MongoDB"],
       githubUrl: "https://github.com/KKanistan06/air-quality-monitoring-system",
-      liveUrl: "https://air-quality-app.com",
       color: "#4ECDC4"
     },
     {
@@ -50,7 +47,6 @@ const Projects = () => {
       category: "Software Engineering",
       techStack: ["React", "MongoDB", "JWT"],
       githubUrl: "https://github.com/KKanistan06/password-manager",
-      liveUrl: "https://password-manager.com",
       color: "#1A535C"
     },
     {
@@ -81,7 +77,6 @@ const Projects = () => {
       category: "Software Engineering",
       techStack: ["React", "MongoDB", "Node.js", "Express"],
       githubUrl: "https://github.com/KKanistan06/project-info-management",
-      liveUrl: "https://project-Manager.com",
       color: "#FFA07A"
     },
     {
@@ -99,9 +94,10 @@ const Projects = () => {
       title: "Page Replacement Algorithms",
       description: "Real-time object detection system using Python, OpenCV, and Keras to identify and track objects based on specific color ranges, useful in robotics and vision applications.",
       image: "/images/project9.png",
-      category: "AI / Machine Learning",
+      category: "Software Engineering",
       techStack: ["Algorithms", "React", "OS"],
       githubUrl: "https://github.com/KKanistan06/Page-Replacement-Simulator",
+      liveUrl: "https://pagereplacementsimulatortool.netlify.app/",
       color: "#00BFFF"
     }
   ];
@@ -260,19 +256,19 @@ const Projects = () => {
             <div className="projects__stats">
               <div className="projects__stat">
                 <div className="projects__stat-icon">🚀</div>
-                <div className="projects__stat-number">20+</div>
+                <div className="projects__stat-number">25+</div>
                 <div className="projects__stat-label">Projects Completed</div>
                 <div className="projects__stat-glow"></div>
               </div>
               <div className="projects__stat">
                 <div className="projects__stat-icon">⭐</div>
-                <div className="projects__stat-number">150+</div>
-                <div className="projects__stat-label">GitHub Stars</div>
+                <div className="projects__stat-number">250+</div>
+                <div className="projects__stat-label">GitHub Commits</div>
                 <div className="projects__stat-glow"></div>
               </div>
               <div className="projects__stat">
                 <div className="projects__stat-icon">🏆</div>
-                <div className="projects__stat-number">8+</div>
+                <div className="projects__stat-number">10+</div>
                 <div className="projects__stat-label">Awards Won</div>
                 <div className="projects__stat-glow"></div>
               </div>
