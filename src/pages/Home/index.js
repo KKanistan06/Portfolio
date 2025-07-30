@@ -81,10 +81,10 @@ const Home = () => {
 
 const downloadCV = (type) => {
   const link = document.createElement('a');
-  link.href = `/cv/kanistan_resume_${type}.pdf`;
-  link.download = `Kanesalingam_Kanistan_${type}_Resume.pdf`;
+  link.href = `/CV/Kanistan_Kanesalingam_${type}_Resume.pdf`;
+  link.download = `Kanistan_Kanesalingam_${type}_Resume.pdf`;
   link.click();
-  
+
   // Optional: Track download analytics
   console.log(`Resume downloaded: ${type}`);
 };
