@@ -10,6 +10,46 @@ const Projects = () => {
 
   const projects = [
     {
+      id: 10,
+      title: "NeuroMath – AI-Powered Adaptive Mathematics Learning Platform",
+      description: "Curriculum-grounded RAG platform generating validated, grade- and topic-specific mathematics MCQs using BGE-M3, Qdrant, BM25 and Qwen on RunPod. Includes human review, adaptive quizzes and Tamil/Sinhala translation.",
+      image: "/images/neuromath.png",
+      category: "Machine Learning",
+      techStack: ["Python", "Flask", "LangChain", "Qwen", "BGE-M3", "Qdrant", "BM25", "RunPod", "PostgreSQL", "Pytest"],
+      githubUrl: "https://github.com/KKanistan06/NueroMath",
+      color: "#6A0572"
+    },
+    {
+      id: 11,
+      title: "AI Assignment Grading Agent",
+      description: "Authenticated grading workspace assessing code and document submissions against lab sheets and question-level rubrics. Uses Gemini embeddings and Qdrant RAG with a tool-enabled agent for evidence-grounded grading, deduction explanations, audited mark updates and Excel export.",
+      image: "/images/ai-assignment-grading-agent.png",
+      category: "Machine Learning",
+      techStack: ["Python", "Gemini API", "Qdrant", "RAG", "Embeddings", "SQLite"],
+      githubUrl: "https://github.com/KKanistan06/ai-assignment-grading-agent",
+      color: "#4ECDC4"
+    },
+    {
+      id: 12,
+      title: "Adversarial Agent Runtime",
+      description: "Framework-free Python agent runtime for hostile or unreliable model behavior, with trusted validation, capability-based tool authorization, exactly-once effects, bounded parallel execution, durable recovery, context compaction, chaos testing and offline replay.",
+      image: "/images/adversarial-agent-runtime.png",
+      category: "Software Engineering",
+      techStack: ["Python", "SQLite", "Pytest", "Agent Tool Calling", "Evaluation Harnesses"],
+      githubUrl: "https://github.com/KKanistan06/adversarial-agent-runtime",
+      color: "#FFB347"
+    },
+    {
+      id: 13,
+      title: "AI-Powered Ballerina Connector Automator",
+      description: "AI-assisted CLI pipeline generating Ballerina connectors from OpenAPI specifications and Java SDK JARs. Automates SDK analysis, intermediate representation, connector generation, Claude-powered compilation fixes, usage examples, tests and documentation.",
+      image: "/images/ballerina-connector-automator.png",
+      category: "Software Engineering",
+      techStack: ["Ballerina", "Java", "Anthropic Claude", "OpenAPI", "Gradle"],
+      githubUrl: "https://github.com/KKanistan06/ballerina-connector-automation",
+      color: "#FF6B6B"
+    },
+    {
       id: 1,
       title: "Course Registration System",
       description: "Full-stack course registration system with .NET, MS SQL Server, featuring user authentication, real-time registration management, and comprehensive admin dashboard.",
